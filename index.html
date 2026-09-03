@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive, modern DOM-based Notes Manager built with HTML, CSS, and JavaScript.">
+    <title>Notes Manager • DOM Assignment</title>
+
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="main-wrapper">
+
+        <!-- Header Section with Live Stats Counter and Theme Switcher -->
+        <header class="header">
+            <div class="brand-section">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Notes Manager</h1>
+                    <p>Interactive DOM-based notes &amp; tasks</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <!-- Live Dynamic Counters -->
+                <div class="stats-group">
+                    <div class="stat-pill" title="Total active notes">
+                        <span>Total Notes</span>
+                        <span id="totalCount" class="count">0</span>
+                    </div>
+                    <div class="stat-pill important-pill" title="Important notes">
+                        <span>Important</span>
+                        <span id="importantCount" class="count">0</span>
+                    </div>
+                </div>
+
+                <!-- Dark / Light Theme Toggle -->
+                <button id="themeToggleBtn" class="theme-btn" aria-label="Toggle theme" title="Toggle Theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Note Creator Section -->
+        <section class="create-card">
+            <div class="input-container">
+                <div class="input-header">
+                    <label for="noteInput" class="input-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Create New Note
+                    </label>
+                    <span id="charCounter" class="char-counter">0 / 500</span>
+                </div>
+
+                <div class="textarea-wrapper">
+                    <textarea 
+                        id="noteInput" 
+                        placeholder="Write your note here... (Shortcut: Ctrl + Enter to save)" 
+                        maxlength="500" 
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <div class="create-actions-bar">
+                    <label class="important-checkbox-label">
+                        <input type="checkbox" id="importantCheckbox">
+                        <span>Mark as Important</span>
+                    </label>
+
+                    <button id="addNoteBtn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add Note</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Toolbar: Filters and Search -->
+        <section class="controls-toolbar">
+            <div class="filter-pills">
+                <button class="filter-btn active" data-filter="all">All Notes</button>
+                <button class="filter-btn" data-filter="important">★ Important Only</button>
+            </div>
+
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search notes...">
+            </div>
+        </section>
+
+        <!-- Dynamic Notes Grid Container -->
+        <section id="notesContainer">
+            <!-- Empty State Display -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-state-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                </div>
+                <h3>No notes found</h3>
+                <p>Add a new note above to get started, or clear your search query.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+
+</html>
